@@ -7,14 +7,12 @@ Email : vkvanshulkesharwani54@gmail.com
 Description : This is a Web app which can give us post and get request reply. Working on JavaScript. This project works without refreshing page.
 */
 
-// Utility functions:
-// 1. Utility function to get DOM element from string.
+// Utility function to get DOM element from string.
 function getElementFromString(string) {
     let div = document.createElement("div");
     div.innerHTML = string;
     return div.firstElementChild;
 };
-
 
 // grabbing parameters box here from ID and hide it initially.
 let parametersBox = document.getElementById("parametersBox");
@@ -79,10 +77,10 @@ submitBtn.addEventListener("click", () => {
     let requestType = document.querySelector("input[name='requestType']:checked").value;
     let contentType = document.querySelector("input[name='contentType']:checked").value;
 
+    // Assign empty dataObj.
+    let dataObj = {};
     // if user select parameters instead of JSON, Collect all parameters in object.
     if (contentType == "customParameter") {
-        // Assign empty dataObj.
-        let dataObj = {};
         for (let i = 0; i < parametersCount + 1; i++) {
             // Checking for deleted parameters.
             if (document.getElementById("parameterValue" + (i + 1)) != undefined) {
@@ -93,9 +91,30 @@ submitBtn.addEventListener("click", () => {
                 dataObj[keyOfParameter] = valueOfParameter;
             };
             // Convert object into string here.
-            dataObj = JSON.stringify(dataObj);
         };
+        dataObj = JSON.stringify(dataObj);
     } else {
         dataObj = document.getElementById("jsonText").value;
+    };
+    // If the request type is GET invoked fetch API to create GET request.
+    if (requestType == "GET") {
+        fetch(url, { method: 'GET' })
+            .then(response => response.text())
+            .then((text) => {
+                document.getElementById("responseText").value = text;
+            });
+    } else {
+        // the request type is post invoked fetch API to create POST request.
+        fetch(url, {
+                method: 'POST',
+                body: dataObj,
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8'
+                }
+            })
+            .then(response => response.text())
+            .then((text) => {
+                document.getElementById("responseText").value = text;
+            });
     };
 });
