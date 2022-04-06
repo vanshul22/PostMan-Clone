@@ -2,10 +2,12 @@
 Website Name - Postman-Clone
 Name : Vanshul Kesharwani
 Date : 05/04/2022
-Version : 4.2.1
+Version : 5.2.1
 Email : vkvanshulkesharwani54@gmail.com
 Description : This is a Web app which can give us post and get request reply. Working on JavaScript. This project works without refreshing page.
 */
+
+// Post check link : https://jsonplaceholder.typicode.com/posts
 
 // Utility function to get DOM element from string.
 function getElementFromString(string) {
