@@ -93,8 +93,12 @@
                 <div class="col-sm-5">
                     <input type="text" class="form-control" id="parameterValue1" placeholder="Enter parameter 1 Value">
                 </div>
-                <button class="col-sm-1 btn btn-dark">+</button>
+                <button id="addParametersBtn" class="col-sm-1 btn btn-dark">+</button>
             </div>
+        </div>
+        <!-- new parameters will add here by JS -->
+        <div id="newParameters">
+
         </div>
         <!-- JSON box:- this will hide on clicking parameter option from content type. -->
         <div id="jsonBox">
@@ -107,6 +111,7 @@
         </div>
         <!-- Submit button which will triggered fetch API -->
         <button type="submit" class="btn btn-dark" id="submitBtn">Submit</button>
+        <!-- Response will appear here -->
         <div id="responseBox">
             <div class="row mb-3">
                 <label for="responseText" class="col-sm-2 col-form-label">Response :</label>
