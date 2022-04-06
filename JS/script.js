@@ -72,7 +72,8 @@ addParametersBtn.addEventListener("click", () => {
 let submitBtn = document.getElementById("submitBtn");
 submitBtn.addEventListener("click", () => {
     // Show "Please Wait" in the response box.
-    document.getElementById("responseText").value = "Please wait fetching response...";
+    // document.getElementById("responseText").value = "Please wait fetching response...";
+    document.getElementById("responsePrismCode").innerHTML = "Please wait fetching response...";
     // Fetch all the values that user entered.
     let url = document.getElementById("url").value;
     // Select element by their name. Whatever the element is checked it will give the value of element.
@@ -103,7 +104,9 @@ submitBtn.addEventListener("click", () => {
         fetch(url, { method: 'GET' })
             .then(response => response.text())
             .then((text) => {
-                document.getElementById("responseText").value = text;
+                // document.getElementById("responseText").value = text;
+                document.getElementById("responsePrismCode").innerHTML = text;
+                Prism.highlightAll();
             });
     } else {
         // the request type is post invoked fetch API to create POST request.
@@ -116,7 +119,9 @@ submitBtn.addEventListener("click", () => {
             })
             .then(response => response.text())
             .then((text) => {
-                document.getElementById("responseText").value = text;
+                // document.getElementById("responseText").value = text;
+                document.getElementById("c").innerHTML = text;
+                Prism.highlightAll();
             });
     };
 });
